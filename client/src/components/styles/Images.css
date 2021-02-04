@@ -1,0 +1,67 @@
+.image-gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: masonry;
+    grid-gap: 15px;
+}
+
+.img img{
+    width: 100%;
+    height: auto;
+}
+
+.img-item{
+    position: relative;
+}
+
+.options{
+    position: absolute;
+    display: none;
+    top: 5px;
+    right: 5px;
+}
+
+.img:hover + .options{
+    display: block !important;
+}
+
+.like-btn{
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 6.3px 10px;
+    border: none;
+    margin: 5px;
+}
+
+.like-btn:focus{
+    outline: none;
+}
+
+.fa-heart{
+    color: rgb(139, 139, 139);
+    font-size: 15px;
+}
+
+.active{
+    background-color: rgb(216, 71, 71) !important;
+    color: white;
+}
+@media screen and (max-width: 768px) {
+    .options{
+        position: absolute;
+        margin: 5px 0px 10px 0px;
+        padding: 10px 0px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .like-btn {
+      position: static;
+      margin-top: 3px;
+      background-color: rgb(233, 233, 233);
+    }
+}
+
+
+
