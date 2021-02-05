@@ -47,6 +47,11 @@
     background-color: rgb(216, 71, 71) !important;
     color: white;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .options{
         position: absolute;

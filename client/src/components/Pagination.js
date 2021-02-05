@@ -9,7 +9,7 @@ export default function Pagination(props) {
                 {props.loading ? <p></p> : <>
                     <ul className="pagination pagination-lg">
                         {pages.map(page =>(
-                            <li className="page-item" key={page}>
+                            <li className="page-item cursor-pointer" key={page}>
                                 <a className="page-link" onClick={() => props.handlePaginationClick(page)}>{page}</a>
                             </li> 
                         ))}   
