@@ -40,7 +40,7 @@ export default function ImageItem(props) {
                                 </div>
                             </div>
                             <div className="col-12 d-flex justify-content-center">
-                                <img alt='' src={`http://localhost:3000/images/${image.imageName}`}/>
+                                <img alt='' src={`/images/${image.imageName}`}/>
                             </div>
                         </div>    
                     </>}

@@ -20,7 +20,7 @@ export default function AddImage() {
 
             <div className="container my-4">
                 <div className="d-flex justify-content-center">
-                    <form onSubmit={handleSubmit} action="http://localhost:3000/api/images" method='POST' className='col-12 d-flex flex-column' encType="multipart/form-data">
+                    <form onSubmit={handleSubmit} action="/api/images" method='POST' className='col-12 d-flex flex-column' encType="multipart/form-data">
                         { errors && 
                             <div className="d-flex justify-content-center">
                                 <div className="alert alert-primary col-md-6 col-sm-6" role="alert">

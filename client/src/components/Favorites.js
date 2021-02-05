@@ -45,7 +45,7 @@ export default function Favorites() {
                 {favImages.map((image, index) =>(
                     <div key={image} className="img-wrapper">
                         <button data-id={index} onClick={removeItem}  className="remove-btn btn btn-secondary"><i data-id={index} dataid={image.imageName} className="far fa-times"></i></button>
-                        <a target="_blank" rel="noreferrer" href={`http://localhost:3000/images/${image}`}><img alt='' className='img' src={`http://localhost:3000/images/${image}`} alt=""/></a>
+                        <a target="_blank" rel="noreferrer" href={`/images/${image}`}><img alt='' className='img' src={`/images/${image}`} alt=""/></a>
                     </div>  
                 ))}
             </div>
