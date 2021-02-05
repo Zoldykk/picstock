@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
 import './styles/Favorites.css';
+import Masonry from 'react-masonry-css'
+
 
 
 export default function Favorites() {
@@ -10,13 +12,13 @@ export default function Favorites() {
 
 
     useEffect(() =>{
-        if(localStorage.getItem('id') === '[]'){
+        if(localStorage.getItem('id') === null){
             setIsEmpty(true)
         } else{
             const storedImages = JSON.parse(localStorage.getItem('id'))
-            storedImages.map(id =>{
-                return results.push(id)
-            }) 
+            storedImages.map(id =>(
+                 results.push(id)
+            )) 
             setFavImages(results) 
         }
     }, [])  
@@ -28,6 +30,13 @@ export default function Favorites() {
         storedImages.splice(itemToRemove, 1)
         localStorage.setItem('id', JSON.stringify(storedImages));
         setFavImages(storedImages)
+    }
+
+    const breakpointColumnsObj = {
+        default: 3,
+        1100: 3,
+        768: 2,
+        500: 1
     }
     
 
@@ -42,12 +51,17 @@ export default function Favorites() {
             }
     
             <div className="image-gallery container my-5">
-                {favImages.map((image, index) =>(
-                    <div key={image} className="img-wrapper">
-                        <button data-id={index} onClick={removeItem}  className="remove-btn btn btn-secondary"><i data-id={index} dataid={image.imageName} className="far fa-times"></i></button>
-                        <a target="_blank" rel="noreferrer" href={`/images/${image}`}><img alt='' className='img' src={`/images/${image}`} alt=""/></a>
-                    </div>  
-                ))}
+                <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column">
+                    {favImages.map((image, index) =>(
+                        <div key={image} className="img-wrapper">
+                            <button data-id={index} onClick={removeItem}  className="remove-btn btn btn-secondary"><i data-id={index} dataid={image.imageName} className="far fa-times"></i></button>
+                            <a target="_blank" rel="noreferrer" href={`/images/${image}`}><img alt='' className='img' src={`/images/${image}`} alt=""/></a>
+                        </div>  
+                    ))}
+                </Masonry>
             </div>
         </div>
     )
