@@ -12,7 +12,8 @@ export default function Favorites() {
 
 
     useEffect(() =>{
-        if(localStorage.getItem('id') === null){
+        const storage = JSON.parse(localStorage.getItem('id'));
+        if(storage.length === 0){
             setIsEmpty(true)
         } else{
             const storedImages = JSON.parse(localStorage.getItem('id'))
