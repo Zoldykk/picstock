@@ -17,7 +17,7 @@ exports.images__post = async (req, res) =>{
         category: req.body.category
     });
     newImage.save();
-    res.redirect('http://localhost:3001/')
+    res.redirect('/')
 }
 
 exports.searchDocs__get = async (req, res) =>{
