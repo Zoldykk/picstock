@@ -10,7 +10,7 @@ const app = express()
 const port = process.env.PORT || 5000;
 
 // DB Config
-const URI = process.env.dbURI;
+const URI = process.env.dbURI || 'mongodb+srv://zaki:zaki@cluster0.08v1z.mongodb.net/Cluster0?retryWrites=true&w=majority';
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true },  () => {console.log('Connected to Db')})
 
 //Middlewares
