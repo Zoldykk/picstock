@@ -8,10 +8,7 @@ export default function Home() {
 
     const {data: images, setData: setImages, isLoading, setIsLoading,  error, setError} = useFetch('/api/images')
     const fetchSearchquery = (data) =>{
-        if(data === ''){
-            setImages(images)
-            setIsLoading(false)
-        }else{
+        
             fetch(`/api/images/search?query=${data}`)
             .then(response =>{
                 return response.json();
@@ -24,7 +21,6 @@ export default function Home() {
                     setImages(results)
                 }
             })
-        }
     }
 
     return (
