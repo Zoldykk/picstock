@@ -1,11 +1,7 @@
-import IMAGE_PER_PAGE from '../utils/globalVar'
 import './styles/Images.css';
 import Masonry from 'react-masonry-css'
 
-export default function Images(props) {
-    const startIndex = ( props.page -1 ) * IMAGE_PER_PAGE;
-    const selectedImages = props.images.slice(startIndex, startIndex + IMAGE_PER_PAGE)
-
+export default function Images({images, loading, error}) {
 
     const saveToLocalStorage = (e) =>{
         let imageId = [];
@@ -25,20 +21,22 @@ export default function Images(props) {
     return (
         <div className='Images my-5'> 
             <div className="image-gallery">
-                { props.loading ? <p>Loading...</p> : <> 
-                    <Masonry
-                    breakpointCols={breakpointColumnsObj}
-                    className="my-masonry-grid"
-                    columnClassName="my-masonry-grid_column">
-                        {selectedImages.map(image =>(
-                            <div key={image._id} className="img-item">
-                                <a className='img' href={`/images/${image._id}`}><img  alt='img' src={`/images/${image.imageName}`}/></a>
-                                <div className="options">
-                                    <i onClick={saveToLocalStorage} dataid={image.imageName} className="fas fa-heart like-btn"></i>
+                { loading ? <p>Loading...</p> : <> 
+                    {error ? <h1 className='text-center'>No images match your query</h1> :
+                        <Masonry
+                        breakpointCols={breakpointColumnsObj}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column">
+                            {images.map(image =>(
+                                <div key={image._id} className="img-item">
+                                    <a className='img' href={`/images/${image._id}`}><img  alt='img' src={`/images/${image.imageName}`}/></a>
+                                    <div className="options">
+                                        <i onClick={saveToLocalStorage} dataid={image.imageName} className="fas fa-heart like-btn"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </Masonry>
+                            ))}
+                        </Masonry>
+                    }
                 </>}
             </div>
         </div>

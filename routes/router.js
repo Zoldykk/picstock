@@ -25,9 +25,9 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({storage: storage, fileFilter: fileFilter});
 
-router.get('/api/images/search', controller.searchDocs__get)
-router.get('/api/images', controller.images__get)
-router.get('/api/images/:id', controller.imageItem__get)
-router.post('/api/images', upload.single('imageName'), controller.images__post)
+router.get('/api/images/search', controller.searchDocsGet)
+router.get('/api/images', controller.imagesGet)
+router.get('/api/images/:id', controller.imageItemGet)
+router.post('/api/images', upload.single('imageName'), controller.imagesPost)
 
 module.exports = router

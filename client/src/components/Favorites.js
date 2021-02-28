@@ -3,15 +3,13 @@ import Nav from '../components/Nav'
 import './styles/Favorites.css';
 import Masonry from 'react-masonry-css'
 
-
-
 export default function Favorites() {
     const [isEmpty, setIsEmpty] = useState(false);
     const [favImages, setFavImages] = useState([]);
-    let results = [];
 
 
     useEffect(() =>{
+        let results = [];
         const storage = JSON.parse(localStorage.getItem('id'));
         if(storage.length === 0){
             setIsEmpty(true)
@@ -59,7 +57,7 @@ export default function Favorites() {
                     {favImages.map((image, index) =>(
                         <div key={image} className="img-wrapper">
                             <button data-id={index} onClick={removeItem}  className="remove-btn btn btn-secondary"><i data-id={index} dataid={image.imageName} className="far fa-times"></i></button>
-                            <a target="_blank" rel="noreferrer" href={`/images/${image}`}><img alt='' className='img' src={`/images/${image}`} alt=""/></a>
+                            <a target="_blank" rel="noreferrer" href={`/images/${image}`}><img alt='' className='img' src={`/images/${image}`}/></a>
                         </div>  
                     ))}
                 </Masonry>

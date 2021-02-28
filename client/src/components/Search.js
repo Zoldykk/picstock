@@ -5,6 +5,7 @@ export default function Search(props) {
 
     const getSearchValue = (e) =>{
         setSearchValue(e.target.value)
+        props.getSearchvalue(searchValue)
     }
 
     const handleSubmit = (e) =>{
